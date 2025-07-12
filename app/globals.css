@@ -2,17 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer components {
+  .adjustButton {
+    @apply w-[44px] h-[44px] !rounded-full flex items-center justify-center !border-[#d8d8d8];
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .quantityInput {
+    @apply absolute left-2 w-[70%] my-auto h-[40px] text-center text-[#333] text-sm font-semibold focus:outline-none ml-2.5 border-y border-[#d8d8d8];
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .authInput {
+    @apply border border-[#d9d9d9] h-10 text-xs flex-1 w-full text-[#666] placeholder:text-[#666] px-2.5;
+  }
+
+  .headerLink {
+    @apply flex flex-col gap-y-1.5 items-center text-[#333] text-xs cursor-pointer gap-x-1.5;
+  }
+
+  .headerDropdownLink {
+    @apply text-[#222] text-sm w-full hover:text-primary transition-colors py-2.5 px-4 disabled:cursor-not-allowed;
+  }
+
+  .maskImage {
+    -webkit-mask-image: radial-gradient(#fff, #000);
+    mask-image: radial-gradient(#fff, #000);
   }
 }
 
@@ -80,8 +99,6 @@
 }
 
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -90,3 +107,4 @@
     @apply bg-background text-foreground;
   }
 }
+
