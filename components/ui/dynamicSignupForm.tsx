@@ -1,29 +1,41 @@
 "use client"
 
-import { div } from "framer-motion/client"
+import getInputType from "@/lib/getInputType"
 import { IAttributes } from "oneentry/dist/base/utils"
 import { IFormsEntity } from "oneentry/dist/forms/formsInterfaces"
-import { IFormDataEntity } from "oneentry/dist/formsData/formsDataInterfaces"
 import { useFormState } from "react-dom"
+import SubmitButton from "./submitButton"
+import { buttonVariants } from "./button"
+import signupAction from "@/actions/signupAction"
+import { ISignUpEntity } from "oneentry/dist/auth-provider/authProvidersInterfaces"
 
 const initialState ={
     message:"",
+} 
+// Type guard: check if the state has a message property
+function hasMessage(
+  state?: ISignUpEntity | { message: any } | any
+): state is { message: any } {
+  return (state as any).message !== undefined;
 }
+
 function DynamicSignupForm({formEntity} : {
     formEntity: IFormsEntity | undefined
 }) {
-    //const {state,formAction} = useFormState(formAction,initialState);
+    const [state,formAction] = useFormState(signupAction, initialState);
     //(useToastOnStateChange(state)
-  return <form  className="space-y-4 w-full -mt-20">
+  return <form  
+  action={formAction}
+  className="space-y-4 w-full -mt-20">
     {formEntity?.attributes.map((attribute:IAttributes) =>(
 
         <div 
         key={attribute.position}
         className="flex items-center space-x-2">
         
-        <label htmlFor=""
+        <label htmlFor={attribute.marker}
         className="block text-xs font-medium text-[#666] w-36 text-right">
-            {attribute.localizeInfos?.title}
+           {attribute.marker} {attribute.localizeInfos?.title}
         </label>
 
         <div className="w-full">
@@ -31,15 +43,32 @@ function DynamicSignupForm({formEntity} : {
             required={attribute.validators?.requiredValidator?.strict}
             name={attribute.marker}
             className="authInput"
-            placeholder={attribute.localizeInfos?.tite}
+            placeholder= {attribute.marker}//{attribute.localizeInfos?.tite}
+            type={getInputType(attribute.type,attribute.marker)}
 
             />
-
         </div>
-
-        </div>
-
+      </div>
     ))}
+
+    <div className="ml-[120px]">
+        {/* error message */}
+          {hasMessage(state) && (
+          <p className="text-[#e52828] text-xs mb-4">{state.message}</p>
+        )}
+      
+        
+
+        <SubmitButton
+        className={buttonVariants({
+            className:
+            "rounded-none borber border-transparent disabled:bg-black/[0.5] disabled:text-black/25 disabled:cursor-not-allowed disabled:border-[#d9d9d9]"
+        })}
+        >
+            Agree and sign up
+        </SubmitButton>
+
+    </div>
 
   </form>
 }
