@@ -1,7 +1,6 @@
 "use server"
 
 import { getApiInstance } from "@/app/oneentry";
-import { frameData } from "framer-motion";
 import { ISignUpData } from "oneentry/dist/auth-provider/authProvidersInterfaces";
 
 
@@ -75,7 +74,7 @@ export default async function signupAction(
             }
         };
 
-        const formDataRes = await ApiInstance?.AuthProvider.signUp('signup',data);
+        const formDataRes = await ApiInstance?.AuthProvider.signUp('signupyt',data);
         
         return formDataRes;
         

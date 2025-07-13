@@ -5,9 +5,11 @@ import { IAttributes } from "oneentry/dist/base/utils"
 import { IFormsEntity } from "oneentry/dist/forms/formsInterfaces"
 import { useFormState } from "react-dom"
 import SubmitButton from "./submitButton"
-import { buttonVariants } from "./button"
+import { Button, buttonVariants } from "./button"
 import signupAction from "@/actions/signupAction"
 import { ISignUpEntity } from "oneentry/dist/auth-provider/authProvidersInterfaces"
+import { useToastOnStateChange } from "@/hook/useToastOnStateChange"
+import Link from "next/link"
 
 const initialState ={
     message:"",
@@ -23,7 +25,18 @@ function DynamicSignupForm({formEntity} : {
     formEntity: IFormsEntity | undefined
 }) {
     const [state,formAction] = useFormState(signupAction, initialState);
-    //(useToastOnStateChange(state)
+    useToastOnStateChange({
+        message:!hasMessage(state) ? "sign up success":undefined,
+        success:true,
+        data: {
+            action:(
+                <Button asChild className="rounded ml-4">
+                   <Link href={'/login'}>Sign in</Link>
+                </Button>
+            ),
+            className:'w-fit'
+        }
+    })
   return <form  
   action={formAction}
   className="space-y-4 w-full -mt-20">
