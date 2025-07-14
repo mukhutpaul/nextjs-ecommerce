@@ -10,12 +10,10 @@ export default function Home() {
     src={banner}
     alt="banner"
     className="h-[220px] object-cover"
-    
     />
-
-    <div className="pt-5">
+    <div className="mt-5 space-y-4 max-w-6xl mx-auto">
       <TabSelector />
-       {/* <CatalogPageGrid /> */}
+       <CatalogPageGrid />
     </div>
     
     </main>

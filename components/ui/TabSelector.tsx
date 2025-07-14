@@ -35,7 +35,7 @@ const Tab = ({ text, selected, setSelected }: TabProps) => {
 const TabSelector = () => {
   const [selected, setSelected] = useState<string>(tabs[0])
   return (
-    <div className="mb-8 flex flex-wrap items-center gap-2">
+    <div className="mb-8 flex flex-wrap items-center gap-6 px-5 xl:px-0">
       {tabs.map((tab, index) => (
         <Tab
           text={tab}
