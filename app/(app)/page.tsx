@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import banner from "@/app/banner.png"
 import TabSelector from "@/components/ui/TabSelector";
+import CatalogPageGrid from "@/components/ui/CatalogPageGrid";
 
 export default function Home() {
   return (
