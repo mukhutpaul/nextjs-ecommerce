@@ -9,10 +9,11 @@ import {
 import { ListOrderedIcon, MessageSquareText, User } from "lucide-react"
 import { Button } from "./button"
 import SignUpButton from "./SignUpButton"
+import fetchUserSession from "@/actions/fetchUserSession"
 
 async function Header() {
-    //const user = await fetchUserSession();
-    const user = false
+    const user = await fetchUserSession();
+
   return (
     <header className="w-full bg-white py-4 px-5 md:px-8 flex items-center justify-between text-[#333]">
         <Link
