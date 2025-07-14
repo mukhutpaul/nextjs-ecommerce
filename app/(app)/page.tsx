@@ -14,7 +14,7 @@ export default function Home() {
     />
     <div className="mt-5 space-y-4 max-w-6xl mx-auto">
       <TabSelector />
-       <CatalogPageGrid />
+      <CatalogPageGrid />
     </div>
     
     </main>
