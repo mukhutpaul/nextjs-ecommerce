@@ -25,12 +25,12 @@ const Tab = ({ text, selected, setSelected }: TabProps) => {
         <motion.span
           layoutId="tab"
           transition={{ type: 'spring', duration: 0.4 }}
-          className="absolute inset-0 z-0 rounded-md bg-red-500"
+          className="absolute inset-0 z-0 rounded-[100px] bg-white border-2 border-[#222]"
         ></motion.span>
       )}
     </button>
-  )
-}
+  );
+};
 
 const TabSelector = () => {
   const [selected, setSelected] = useState<string>(tabs[0])
