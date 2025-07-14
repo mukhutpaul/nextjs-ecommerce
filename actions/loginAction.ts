@@ -23,18 +23,18 @@ export default async function loginAction(prevState:any,formData: FormData){
      const data: IAuthPostBody = {
         authData:[
             {
-                marker:account,
+                marker:'account',
                 value:account
             },
 
               {
-                marker:password,
+                marker:'password',
                 value:password
             }
         ]
      };
 
-     const authRes = await apiInstance.AuthProvider.auth('signin',data);
+     const authRes = await apiInstance.AuthProvider.auth('signinauth',data);
 
      cookies().set('access_token',authRes.accessToken,{
         maxAge: 60 * 60 * 24, // 24 hours

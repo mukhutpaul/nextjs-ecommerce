@@ -3,10 +3,10 @@ import DynamycLoginForm from "@/components/ui/dynamycLoginForm";
 
 async function LoginPage() {
   const apiInstance = await getApiInstance();
-  const loginForm = await apiInstance?.Forms.getFormByMarker("signin");
+  const loginForm = await apiInstance?.Forms.getFormByMarker('signin');
 
   console.log(loginForm);
-  return <DynamycLoginForm />
+  return <DynamycLoginForm formEntity={loginForm} />
 }
 
 export default LoginPage

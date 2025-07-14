@@ -15,9 +15,9 @@ const initialState = {
 function DynamicLoginForm({
   formEntity,
 }: {
-  formEntity: IFormsEntity | undefined;
+  formEntity: IFormsEntity | undefined | any;
 }) {
-  const [state, formAction] = useFormState(loginAction, initialState);
+  const [state,formAction] = useFormState(loginAction, initialState);
 
   return (
     <form action={formAction} className="space-y-4 w-full -mt-20">

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import banner from "@/app/banner.png"
+import TabSelector from "@/components/ui/TabSelector";
 
 export default function Home() {
   return (
@@ -12,8 +13,8 @@ export default function Home() {
     
     />
 
-    <div>
-      {/* <TabSelector /> */}
+    <div className="pt-5">
+      <TabSelector />
        {/* <CatalogPageGrid /> */}
     </div>
     

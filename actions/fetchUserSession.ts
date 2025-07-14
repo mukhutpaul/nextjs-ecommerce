@@ -7,7 +7,7 @@ import { access } from "node:fs/promises";
 
 export default async function fetchUserSession(){
     const apiInstance = await getApiInstance()
-    const access_token = cookies().get("access_tooken")?.value;
+    const access_token = cookies().get("access_token")?.value;
 
     
     if(!access_token) return null;
@@ -19,7 +19,7 @@ export default async function fetchUserSession(){
             throw new Error('User data is invalid or missing ID');
         }
 
-        return user;
+        return user; 
     } catch (error) {
         console.error('Error: fetching user sesson: ',error)
 

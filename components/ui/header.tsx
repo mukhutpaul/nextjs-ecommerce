@@ -10,6 +10,7 @@ import { ListOrderedIcon, MessageSquareText, User } from "lucide-react"
 import { Button } from "./button"
 import SignUpButton from "./SignUpButton"
 import fetchUserSession from "@/actions/fetchUserSession"
+import LogoutForm from "./LogoutForm"
 
 async function Header() {
     const user = await fetchUserSession();
@@ -62,7 +63,7 @@ async function Header() {
                     </HoverCardTrigger>
                     <HoverCardContent className="mr-16 p-2 overflow-hidden w-80" sideOffset={8}>
                         <p className="text-[#222] text-sm p-4 font-semibold">
-                            Ali, Ali Codes
+                            Hi, {user.formData.find((f:any) => f.marker === "fullname")?.values}
                         </p>
                        
                        <hr className="border-[#ddd] w-[90%] mx-auto"/>
@@ -98,7 +99,7 @@ async function Header() {
                         </Link>
                     </div>
                     <hr className="border-[#ddd] w-[90%] mx-auto" />
-                    {/* <LogoForm /> */}
+                    <LogoutForm />
                     </HoverCardContent>
                 </HoverCard>
 
